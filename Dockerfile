@@ -1,7 +1,7 @@
 FROM        quay.io/pterodactyl/core:java
 LABEL       author="YuyuLuna" maintainer="admin@mail.yuyucloud.com"
 
-RUN echo "Asia/Taipei" > /etc/timezone;dpkg-reconfigure -f noninteractive tzdata
+RUN sudo echo "Asia/Taipei" > /etc/timezone;dpkg-reconfigure -f noninteractive tzdata
 
 USER container
 ENV  USER=container HOME=/home/container
