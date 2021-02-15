@@ -1,12 +1,6 @@
 FROM        quay.io/pterodactyl/core:java
 LABEL       author="YuyuLuna" maintainer="admin@mail.yuyucloud.com"
 
-RUN apt update && \
-    apt install -y --no-install-recommends bash && \
-    rm -rf /var/lib/{apt,dpkg,cache,log}/ && \
-    adduser -D -h /home/container container
-
-
 RUN echo "Asia/Taipei" > /etc/timezone;dpkg-reconfigure -f noninteractive tzdata
 
 USER container
