@@ -1,18 +1,17 @@
-FROM        quay.io/pterodactyl/core:java
+FROM        openjdk:11-slim
 LABEL       author="YuyuLuna" maintainer="admin@mail.yuyucloud.com"
 
 
+RUN apt-get update -y \
+ && apt-get install -y curl ca-certificates openssl git tar sqlite fontconfig tzdata iproute2 \
+ && useradd -d /home/container -m container
 
 
-RUN apk add tzdata
-RUN sudo echo "Asia/Taipei" > /etc/timezone;dpkg-reconfigure -f noninteractive tzdata
-RUN echo "Asia/Taipei" >  /etc/timezone
-RUN date
+RUN echo "Asia/Taipei" > /etc/timezone;dpkg-reconfigure -f noninteractive tzdata
 
 USER container
 ENV  USER=container HOME=/home/container
 ENV TZ Asia/Taipei
-RUN apk del tzdata
 
 USER        container
 ENV         USER=container HOME=/home/container
